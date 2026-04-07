@@ -1,0 +1,183 @@
+CENTRAL HUB(ROUTER)::
+en
+conf t
+int g0/0
+no shut
+ip add 10.10.0.1 255.255.255.224
+ex
+
+ip dhcp excluded-address 10.10.0.1 10.10.0.10
+ip dhcp excluded-address 10.10.0.12 10.10.0.14
+	
+ip dhcp pool cen
+network 10.10.0.0 255.255.255.224
+default-router 10.10.0.1
+dns-server 8.8.8.8
+ex
+
+
+UTTARA NORTH, UTTARA SOUTH AND UTTARA CENTER (SWITCHES) ::
+
+en
+config t
+vlan 50
+name TrainOperations
+vlan 80
+name Ticketing
+vlan 100
+name Security
+
+int fa0/1
+switchport mode access
+switchport access vlan 50
+
+int fa0/2
+switchport mode access
+switchport access vlan 50
+
+int fa0/4
+switchport mode access
+switchport access vlan 80
+
+int fa0/5
+switchport mode access
+switchport access vlan 80
+
+int fa0/6
+switchport mode access
+switchport access vlan 80
+
+int fa0/7
+switchport mode access
+switchport access vlan 100
+
+int fa0/8
+switchport mode access
+switchport access vlan 100
+
+int fa0/3
+switchport mode trunk
+
+Uttara North (Router) ::
+
+en
+conf t
+int g0/0
+no shut
+
+int g0/0.50
+encapsulation dot1Q 50
+ip add 10.10.0.33 255.255.255.224
+ex
+
+int g0/0.80
+encapsulation dot1Q 80
+ip add 10.10.0.129 255.255.255.240
+ex
+
+int g0/0.100
+encapsulation dot1Q 100
+ip add 10.10.0.177 255.255.255.240
+
+ex
+
+ip dhcp pool vlan50
+network 10.10.0.32 255.255.255.224
+default-router 10.10.0.33
+dns-server 8.8.8.8
+ex
+
+ip dhcp pool vlan80
+network 10.10.0.128 255.255.255.240
+default-router 10.10.0.129
+dns-server 8.8.8.8
+ex
+
+ip dhcp pool vlan100
+network 10.10.0.176 255.255.255.240
+default-router 10.10.0.177
+dns-server 8.8.8.8
+ex
+
+Uttara South (Router) ::
+
+en
+conf t
+int g0/0
+no shut
+
+int g0/0.50
+encapsulation dot1Q 50
+ip add 10.10.0.65 255.255.255.224
+ex
+
+int g0/0.80
+encapsulation dot1Q 80
+ip add 10.10.0.145 255.255.255.240
+ex
+
+int g0/0.100
+encapsulation dot1Q 100
+ip add 10.10.0.193 255.255.255.240
+
+ex
+
+ip dhcp pool 1
+network 10.10.0.64 255.255.255.224
+default-router 10.10.0.65
+dns-server 8.8.8.8
+ex
+
+ip dhcp pool 2
+network 10.10.0.144 255.255.255.240
+default-router 10.10.0.145
+dns-server 8.8.8.8
+ex
+
+ip dhcp pool 3
+network 10.10.0.192 255.255.255.240
+default-router 10.10.0.193
+dns-server 8.8.8.8
+ex
+
+Uttara Center (Router) ::
+
+en
+conf t
+int g0/0
+no shut
+
+int g0/0.50
+encapsulation dot1Q 50
+ip add 10.10.0.97 255.255.255.224
+ex
+
+int g0/0.80
+encapsulation dot1Q 80
+ip add 10.10.0.161 255.255.255.240
+ex
+
+int g0/0.100
+encapsulation dot1Q 100
+ip add 10.10.0.209 255.255.255.240
+
+ex
+
+ip dhcp pool trenops
+network 10.10.0.96 255.255.255.224
+default-router 10.10.0.97
+dns-server 8.8.8.8
+ex
+
+ip dhcp pool tiket
+network 10.10.0.160 255.255.255.240
+default-router 10.10.0.161
+dns-server 8.8.8.8
+ex
+
+ip dhcp pool sec
+network 10.10.0.208 255.255.255.240
+default-router 10.10.0.209
+dns-server 8.8.8.8
+ex
+
