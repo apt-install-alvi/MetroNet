@@ -181,3 +181,56 @@ default-router 10.10.0.209
 dns-server 8.8.8.8
 ex
 
+ACL:
+
+Uttara North(Router):
+access-list 110 deny ip 10.10.0.32 0.0.0.31 10.10.0.176 0.0.0.15
+access-list 110 deny ip 10.10.0.32 0.0.0.31 10.10.0.192 0.0.0.15
+access-list 110 deny ip 10.10.0.32 0.0.0.31 10.10.0.208 0.0.0.15
+
+access-list 110 deny ip 10.10.0.128 0.0.0.15 10.10.0.176 0.0.0.15
+access-list 110 deny ip 10.10.0.128 0.0.0.15 10.10.0.192 0.0.0.15
+access-list 110 deny ip 10.10.0.128 0.0.0.15 10.10.0.208 0.0.0.15
+
+access-list 110 permit ip any any
+
+interface g0/0.50
+ip access-group 110 in
+
+interface g0/0.80
+ip access-group 110 in
+
+
+Uttara South(Router):
+access-list 115 deny ip 10.10.0.64 0.0.0.31 10.10.0.176 0.0.0.15
+access-list 115 deny ip 10.10.0.64 0.0.0.31 10.10.0.192 0.0.0.15
+access-list 115 deny ip 10.10.0.64 0.0.0.31 10.10.0.208 0.0.0.15
+
+access-list 115 deny ip 10.10.0.144 0.0.0.15 10.10.0.176 0.0.0.15
+access-list 115 deny ip 10.10.0.144 0.0.0.15 10.10.0.192 0.0.0.15
+access-list 115 deny ip 10.10.0.144 0.0.0.15 10.10.0.208 0.0.0.15
+
+access-list 115 permit ip any any
+
+interface g0/0.50
+ip access-group 115 in
+
+interface g0/0.80
+ip access-group 115 in
+
+Uttara Center(Router):
+access-list 130 deny ip 10.10.0.96 0.0.0.31 10.10.0.176 0.0.0.15
+access-list 130 deny ip 10.10.0.96 0.0.0.31 10.10.0.192 0.0.0.15
+access-list 130 deny ip 10.10.0.96 0.0.0.31 10.10.0.208 0.0.0.15
+
+access-list 130 deny ip 10.10.0.160 0.0.0.15 10.10.0.176 0.0.0.15
+access-list 130 deny ip 10.10.0.160 0.0.0.15 10.10.0.192 0.0.0.15
+access-list 130 deny ip 10.10.0.160 0.0.0.15 10.10.0.208 0.0.0.15
+
+access-list 130 permit ip any any
+
+interface g0/0.50
+ip access-group 130 in
+
+interface g0/0.80
+ip access-group 130 in
