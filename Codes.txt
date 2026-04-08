@@ -231,3 +231,84 @@ interface g0/0.50
 ip access-group 130 in
 interface g0/0.80
 ip access-group 130 in
+
+
+Router-Router IP Config:
+
+UTTARA NORTH ROUTER::
+
+en
+conf t
+int s0/2/0
+ip addr 10.10.0.225 255.255.255.252
+no sh
+ex
+int s0/3/0
+ip addr 10.10.0.237 255.255.255.252
+no sh
+ex
+int s0/3/1
+ip addr 10.10.0.245 255.255.255.252
+no sh
+ex
+end
+
+UTTARA SOUTH ROUTER::
+
+en
+conf t
+int s0/2/0
+ip addr 10.10.0.229 255.255.255.252
+no sh
+ex
+int s0/3/0
+ip addr 10.10.0.238 255.255.255.252
+no sh
+ex
+int s0/3/1
+ip addr 10.10.0.241 255.255.255.252
+no sh
+ex
+end
+
+UTTARA CENTER ROUTER::
+
+en
+conf t
+int s0/2/0
+ip addr 10.10.0.233 255.255.255.252
+no sh
+ex
+int s0/3/0
+ip addr 10.10.0.242 255.255.255.252
+no sh
+ex
+int s0/3/1
+ip addr 10.10.0.246 255.255.255.252
+no sh
+ex
+end
+
+CENTRAL HUB(ROUTER)::
+
+
+en
+conf t
+int s0/2/0
+ip addr 10.10.0.234 255.255.255.252
+no sh
+ex
+int s0/3/0
+ip addr 10.10.0.226 255.255.255.252
+no sh
+ex
+int s0/3/1
+ip addr 10.10.0.230 255.255.255.252
+no sh
+ex
+end
+
+
+
+
+
