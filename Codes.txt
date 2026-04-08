@@ -308,7 +308,57 @@ no sh
 ex
 end
 
+Dynamic Routing using OSPF
 
+Central Hub:
+
+enable
+configure terminal
+
+router ospf 1
+
+network 10.10.0.224 0.0.0.3 area 0
+network 10.10.0.228 0.0.0.3 area 0
+network 10.10.0.232 0.0.0.3 area 0
+
+Uttara North:
+
+enable
+configure terminal
+
+router ospf 1
+
+network 10.10.0.224 0.0.0.3 area 0
+
+network 10.10.0.32 0.0.0.31 area 1
+network 10.10.0.128 0.0.0.15 area 1
+network 10.10.0.176 0.0.0.15 area 1
+
+Uttara South:
+
+enable
+configure terminal
+
+router ospf 1
+
+network 10.10.0.228 0.0.0.3 area 0
+
+network 10.10.0.64 0.0.0.31 area 2
+network 10.10.0.144 0.0.0.15 area 2
+network 10.10.0.192 0.0.0.15 area 2
+
+Uttara Center:
+
+enable
+configure terminal
+
+router ospf 1
+
+network 10.10.0.232 0.0.0.3 area 0
+
+network 10.10.0.96 0.0.0.31 area 3
+network 10.10.0.160 0.0.0.15 area 3
+network 10.10.0.208 0.0.0.15 area 3
 
 
 
