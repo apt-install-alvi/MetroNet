@@ -196,7 +196,6 @@ access-list 110 permit ip any any
 
 interface g0/0.50
 ip access-group 110 in
-
 interface g0/0.80
 ip access-group 110 in
 
@@ -214,7 +213,6 @@ access-list 115 permit ip any any
 
 interface g0/0.50
 ip access-group 115 in
-
 interface g0/0.80
 ip access-group 115 in
 
@@ -231,6 +229,5 @@ access-list 130 permit ip any any
 
 interface g0/0.50
 ip access-group 130 in
-
 interface g0/0.80
 ip access-group 130 in
